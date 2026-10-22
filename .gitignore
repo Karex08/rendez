@@ -1,0 +1,4 @@
+node_modules/
+.expo/
+# Captures de l app d origine (Barber Concept) : reference locale uniquement
+design/captures/
