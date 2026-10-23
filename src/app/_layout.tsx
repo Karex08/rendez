@@ -71,7 +71,7 @@ function RootStack() {
             contentStyle: { backgroundColor: colors.background },
           }}
         />
-        <Stack.Screen name="historique" />
+        <Stack.Screen name="rendez-vous" />
       </Stack.Protected>
       <Stack.Protected guard={!!session && !profile}>
         <Stack.Screen name="inscription" />

@@ -40,7 +40,8 @@ Barre d'onglets en bas, 3 onglets : **Accueil**, **Fidélité**, **Profil**.
 - En-tête « Salut, **[prénom]** » (« Salut, » en gris). Pas de sélecteur de ville (un seul salon).
 - « Ton prochain rendez-vous » (seulement s'il y en a un) : carte avec jour + mois en grand, avatar du barbier (initiale), nom du salon, « avec [barbier] », date et heure. Ouvre la fiche du rendez-vous (4.4).
 - Carte du salon : photo `comptoir-logo.jpg` assombrie, nom du salon, adresse, bouton « Réserver ».
-- « Tes derniers rendez-vous » : **affiché uniquement s'il existe au moins un rendez-vous passé**. Les 3 plus récents + lien « Tout voir » vers la liste complète. Les rendez-vous annulés n'y figurent pas.
+- Sous la carte du prochain rendez-vous, lien « Voir tous mes rendez-vous (N) » **affiché uniquement s'il y a au moins 2 rendez-vous à venir**. Il ouvre l'écran « Mes rendez-vous » (4.7).
+- « Tes derniers rendez-vous » : **affiché uniquement s'il existe au moins un rendez-vous passé**. Les 3 plus récents + lien « Tout voir » vers « Mes rendez-vous ». Les rendez-vous annulés n'y figurent pas.
 
 ### 4.3 Parcours de réservation (modal plein écran, liens « Retour » / « Fermer »)
 1. **Choisis une prestation** (sur-titre : nom du salon) : prestations groupées par catégorie (titre par groupe). Chaque ligne : nom, durée, prix en pastille « CHF 40.00 ». Les prestations étudiantes affichent « Carte étudiant à présenter au salon ».
@@ -65,6 +66,9 @@ Même structure que l'app d'origine : carte « Programme fidélité » (niveau a
 
 ### 4.6 Profil
 Initiales en cercle, « Profil », « Gère tes informations de compte. » Champs : prénom, nom, e-mail, téléphone. Boutons « Enregistrer » et « Se déconnecter » (contour rouge).
+
+### 4.7 Mes rendez-vous
+Écran unique pour tous les rendez-vous (ajouté le 23 oct. 2026) : section « À venir » (du plus proche au plus lointain), puis « Passés » (du plus récent au plus ancien). Une section vide n'est pas affichée ; les rendez-vous annulés n'apparaissent pas. Chaque ligne : jour et mois en grand, prestation, date et heure, barbier. Un appui ouvre la fiche du rendez-vous (4.4). Pas de limite au nombre de rendez-vous à venir en v1.
 
 ## 5. Données du salon
 

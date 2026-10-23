@@ -3,17 +3,18 @@ import { router } from 'expo-router';
 import { ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { NextAppointmentCard, PastAppointmentRow } from '@/components/AppointmentCards';
+import { AppointmentRow, NextAppointmentCard } from '@/components/AppointmentCards';
 import { illustrations, salonPhotos } from '@/components/Brand';
 import { Button, T, TextLink } from '@/components/ui';
 import { salon } from '@/data/salon';
-import { nextAppointment, pastAppointments, useApp } from '@/store/AppStore';
+import { pastAppointments, upcomingAppointments, useApp } from '@/store/AppStore';
 import { colors, fonts, gutter, radius, space } from '@/theme/tokens';
 
 export default function Accueil() {
   const { profile, appointments } = useApp();
   const now = new Date();
-  const next = nextAppointment(appointments, now);
+  const upcoming = upcomingAppointments(appointments, now);
+  const next = upcoming[0];
   const past = pastAppointments(appointments, now);
 
   return (
@@ -28,6 +29,9 @@ export default function Accueil() {
           <View style={{ gap: space.sm }}>
             <T variant="eyebrow">Ton prochain rendez-vous</T>
             <NextAppointmentCard appointment={next} />
+            {upcoming.length >= 2 ? (
+              <TextLink title={`Voir tous mes rendez-vous (${upcoming.length})`} onPress={() => router.push('/rendez-vous')} />
+            ) : null}
           </View>
         ) : null}
 
@@ -54,10 +58,10 @@ export default function Accueil() {
           <View style={{ gap: space.xs }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'baseline' }}>
               <T variant="eyebrow">Tes derniers rendez-vous</T>
-              {past.length > 3 ? <TextLink title="Tout voir" onPress={() => router.push('/historique')} /> : null}
+              {past.length > 3 ? <TextLink title="Tout voir" onPress={() => router.push('/rendez-vous')} /> : null}
             </View>
             {past.slice(0, 3).map((a) => (
-              <PastAppointmentRow key={a.id} appointment={a} />
+              <AppointmentRow key={a.id} appointment={a} />
             ))}
           </View>
         ) : null}

@@ -48,3 +48,7 @@ L'écran salon avec le bouton « Payé » suffit pour démarrer, car la plupart 
 - Faut-il une plage de validité des points (expiration après 12 mois sans visite ?)
 - Les remises (code promo, tarif étudiant) comptent-elles sur le montant payé ou sur le prix catalogue ?
 - Qui a accès à l'écran salon : un compte par barbier ou un compte partagé pour le comptoir ?
+
+## 2. Limite de rendez-vous à venir
+
+Décidé le 23 oct. 2026. En v1, un client peut réserver autant de rendez-vous à venir qu'il veut (sans serveur, cela ne bloque que son propre téléphone). Avec le serveur partagé, le salon pourra fixer un maximum de rendez-vous à venir par client (par exemple 3) pour éviter les réservations abusives. Valeur à choisir par le salon ; au-delà, l'app affiche un message au moment de réserver.

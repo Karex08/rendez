@@ -47,17 +47,20 @@ export function NextAppointmentCard({ appointment }: { appointment: Appointment 
   );
 }
 
-/** Ligne compacte de l'historique. */
-export function PastAppointmentRow({ appointment }: { appointment: Appointment }) {
+/** Ligne d'un rendez-vous (écran « Mes rendez-vous » et historique de l'accueil). */
+export function AppointmentRow({ appointment }: { appointment: Appointment }) {
   const start = new Date(appointment.startsAt);
+  const barber = barberName(appointment.barberId);
+  const service = serviceName(appointment.serviceId);
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={`${service}, ${formatDayTitle(start)} à ${formatTime(start)}, avec ${barber}`}
       onPress={() => router.navigate({ pathname: '/rdv/[id]', params: { id: appointment.id } })}
       style={({ pressed }) => ({
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
+        gap: space.md,
         paddingVertical: space.md,
         borderBottomWidth: 1,
         borderColor: colors.border,
@@ -65,10 +68,14 @@ export function PastAppointmentRow({ appointment }: { appointment: Appointment }
         opacity: pressed ? 0.7 : 1,
       })}
     >
-      <View style={{ flex: 1, paddingRight: space.md }}>
-        <T style={{ fontFamily: fonts.bodySemiBold }}>{serviceName(appointment.serviceId)}</T>
+      <View style={{ alignItems: 'center', width: 48 }}>
+        <Text style={{ fontFamily: fonts.display, fontSize: 32, color: colors.text, lineHeight: 36 }}>{start.getDate()}</Text>
+        <Text style={{ fontFamily: fonts.bodySemiBold, fontSize: 13, color: colors.textMuted }}>{formatMonthShort(start)}</Text>
+      </View>
+      <View style={{ flex: 1 }}>
+        <T style={{ fontFamily: fonts.bodySemiBold }}>{service}</T>
         <T variant="muted" style={{ fontSize: 14 }}>
-          {formatDayTitle(start)} · avec {barberName(appointment.barberId)}
+          {formatDayTitle(start)}, {formatTime(start)} · avec {barber}
         </T>
       </View>
       <Text style={{ color: colors.textMuted, fontSize: 18 }}>›</Text>

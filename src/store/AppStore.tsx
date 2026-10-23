@@ -98,13 +98,11 @@ export function useApp() {
   return ctx;
 }
 
-/** Prochain rendez-vous confirmé, ou null. */
-export function nextAppointment(appointments: Appointment[], now: Date): Appointment | null {
-  return (
-    appointments
-      .filter((a) => a.status === 'confirmed' && new Date(a.startsAt).getTime() > now.getTime())
-      .sort((a, b) => a.startsAt.localeCompare(b.startsAt))[0] ?? null
-  );
+/** Rendez-vous à venir (hors annulés), du plus proche au plus lointain. */
+export function upcomingAppointments(appointments: Appointment[], now: Date): Appointment[] {
+  return appointments
+    .filter((a) => a.status === 'confirmed' && new Date(a.startsAt).getTime() > now.getTime())
+    .sort((a, b) => a.startsAt.localeCompare(b.startsAt));
 }
 
 /** Rendez-vous passés (hors annulés), du plus récent au plus ancien. */
