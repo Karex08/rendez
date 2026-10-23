@@ -121,6 +121,8 @@ Tranches de 15 min dans le planning du barbier ; un créneau est proposé si la 
 
 League, Express, paiement en ligne (Stripe / TWINT), vrais SMS, calcul des points de fidélité, logique de parrainage, rappel la veille du rendez-vous, espace barbier / gérant, portraits des barbiers, tests sur émulateur Android.
 
+Les décisions déjà prises pour la v2 sont dans `docs/spec-v2.md`, notamment le comptage des points de fidélité.
+
 ## 8. Prérequis avant de coder
 
 - **Xcode** installé (App Store), licence acceptée, runtime simulateur iOS téléchargé (Réglages → Components). Ensuite : `brew install cocoapods watchman`.
